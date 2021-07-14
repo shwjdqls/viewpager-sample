@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/matching"
+        android:enabled="true"
+        android:icon="@drawable/icon_24_px_heart"
+        android:title="매칭" />
+
+    <item
+        android:id="@+id/rating"
+        android:enabled="true"
+        android:icon="@drawable/icon_24_px_rating"
+        android:title="평가/승인" />
+
+    <item
+        android:id="@+id/like"
+        android:enabled="true"
+        android:icon="@drawable/icon_24_px_like"
+        android:title="좋아요" />
+
+    <item
+        android:id="@+id/community"
+        android:enabled="true"
+        android:icon="@drawable/icon_24_px_coummunity"
+        android:title="커뮤니티" />
+
+    <item
+        android:id="@+id/contents"
+        android:enabled="true"
+        android:icon="@drawable/icon_24_px_contents"
+        android:title="콘텐츠" />
+
+</menu>
