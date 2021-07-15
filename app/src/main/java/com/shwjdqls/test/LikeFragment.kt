@@ -12,16 +12,7 @@ import com.shwjdqls.test.databinding.FragmentLikeBinding
 class LikeFragment : Fragment() {
     private var _binding: FragmentLikeBinding? = null
     private val binding get() = _binding!!
-    private val adapter by lazy { PersonAdapter(arrayListOf(Person("a"), Person("b"))) }
-    private val people1 = arrayListOf(
-        Person("Jacob"),
-        Person("Sindi"),
-        Person("Kacof"),
-        Person("Rachel"),
-        Person("Soonka"),
-        Person("Ebby"),
-        Person("Ordin"),
-    )
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,8 +40,6 @@ class LikeFragment : Fragment() {
             }
         }.attach()
 
-        binding.recyclerviewFirst.layoutManager = GridLayoutManager(requireActivity(), 3)
-        adapter.setItems(people1)
-        binding.recyclerviewFirst.adapter = adapter
+
     }
 }

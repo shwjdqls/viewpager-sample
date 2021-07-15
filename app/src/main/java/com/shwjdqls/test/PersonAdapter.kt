@@ -28,6 +28,7 @@ class PersonAdapter(private val items: ArrayList<Person>) : RecyclerView.Adapter
         fun bind(item: Person) {
             binding.apply {
                 this.item = item
+                this.itemImage.setImageResource(item.face)
                 if (adapterPosition == RecyclerView.NO_POSITION) {
                     return@apply
                 }
