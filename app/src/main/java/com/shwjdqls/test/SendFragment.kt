@@ -52,5 +52,9 @@ class SendFragment : Fragment() {
                 binding.textviewListFirst.text = "목록 닫기"
             }
         }
+
+        binding.imageViewDelete.setOnClickListener {
+            adapter.setDeleteMode()
+        }
     }
 }
