@@ -60,8 +60,10 @@ class PersonAdapter : RecyclerView.Adapter<PersonAdapter.PersonViewHolder>() {
         } else {
             selectedItems.clear()
             selectedIndexList.sort()
+            val deletedCount = selectedIndexList.size
             for (i in selectedIndexList.size - 1 downTo 0) {
                 items.removeAt(selectedIndexList[i])
+                totalItems.removeAt(selectedIndexList[i])
             }
             isDeleteMode = false
             notifyDataSetChanged()

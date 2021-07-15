@@ -21,9 +21,7 @@ class SendFragment : Fragment() {
         Person(R.drawable.people_3,"Kacof"),
         Person(R.drawable.people_4,"Rachel"),
         Person(R.drawable.people_5,"Soonka"),
-        Person(R.drawable.people_6,"Ebby"),
-        Person(R.drawable.people_7,"Ordin"),
-        Person(R.drawable.people_8,"Navy"),
+
     )
 
     private val people2 = arrayListOf(
@@ -38,6 +36,9 @@ class SendFragment : Fragment() {
         Person(R.drawable.people_3,"Kacof"),
         Person(R.drawable.people_4,"Rachel"),
         Person(R.drawable.people_5,"Soonka"),
+        Person(R.drawable.people_6,"Ebby"),
+        Person(R.drawable.people_7,"Ordin"),
+        Person(R.drawable.people_8,"Navy"),
     )
 
     override fun onCreateView(
