@@ -7,13 +7,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.shwjdqls.test.databinding.ItemPersonBinding
 
-class PersonAdapter(private val items: ArrayList<Person>) : RecyclerView.Adapter<PersonAdapter.PersonViewHolder>() {
+class PersonAdapter : RecyclerView.Adapter<PersonAdapter.PersonViewHolder>() {
+    private val items = arrayListOf<Person>()
     private val totalItems = arrayListOf<Person>()
     private var isShrunk = true
-
-    init {
-        totalItems.addAll(items)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         PersonViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.item_person, parent, false))
@@ -25,10 +22,12 @@ class PersonAdapter(private val items: ArrayList<Person>) : RecyclerView.Adapter
     }
 
     fun setItems(items: List<Person>) {
+        totalItems.addAll(items)
         var showedItems = items
         if (isShrunk && items.size > 6) {
             showedItems = items.subList(0, 6)
         }
+        Log.d("asdf", showedItems.toString())
         this.items.addAll(showedItems)
         notifyDataSetChanged()
     }
@@ -53,6 +52,7 @@ class PersonAdapter(private val items: ArrayList<Person>) : RecyclerView.Adapter
         fun bind(item: Person) {
             binding.apply {
                 this.item = item
+                this.itemImage.setImageResource(item.face)
                 if (adapterPosition == RecyclerView.NO_POSITION) {
                     return@apply
                 }

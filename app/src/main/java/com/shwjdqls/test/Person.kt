@@ -1,6 +1,6 @@
 package com.shwjdqls.test
 
 data class Person(
-//    val face: String
+    val face: Int,
     val name: String
 )

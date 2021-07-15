@@ -17,9 +17,9 @@
         tools:ignore="UseCompoundDrawables">
 
         <ImageView
+            android:id="@+id/item_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/icon_24_px_trash"
             tools:ignore="ContentDescription" />
 
         <TextView
