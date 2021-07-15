@@ -17,7 +17,6 @@ class PersonAdapter : RecyclerView.Adapter<PersonAdapter.PersonViewHolder>() {
     private val selectedIndexList = arrayListOf<Int>()
     private var isShrunk = true
     private var isDeleteMode = false
-    private var cleared = false
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         PersonViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.item_person, parent, false))
@@ -65,7 +64,6 @@ class PersonAdapter : RecyclerView.Adapter<PersonAdapter.PersonViewHolder>() {
                 items.removeAt(selectedIndexList[i])
             }
             isDeleteMode = false
-            cleared = true
             notifyDataSetChanged()
         }
     }
@@ -78,10 +76,7 @@ class PersonAdapter : RecyclerView.Adapter<PersonAdapter.PersonViewHolder>() {
                 if (adapterPosition == RecyclerView.NO_POSITION) {
                     return@apply
                 }
-                if (cleared) {
-                    itemView.findViewById<ImageView>(R.id.whole_view).setBackgroundColor(ContextCompat.getColor(itemView.context, android.R.color.transparent))
-                    cleared = false
-                }
+                itemView.findViewById<ImageView>(R.id.whole_view).setBackgroundColor(ContextCompat.getColor(itemView.context, android.R.color.transparent))
                 itemView.setOnClickListener {
                     if (isDeleteMode) {
                         val index = (it.parent as ViewGroup).indexOfChild(it)
