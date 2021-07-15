@@ -13,7 +13,6 @@ class LikeFragment : Fragment() {
     private var _binding: FragmentLikeBinding? = null
     private val binding get() = _binding!!
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -39,7 +38,5 @@ class LikeFragment : Fragment() {
                 else -> "좋아요"
             }
         }.attach()
-
-
     }
 }
