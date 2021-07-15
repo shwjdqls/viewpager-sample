@@ -5,10 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import com.google.android.material.tabs.TabLayoutMediator
-import com.shwjdqls.test.databinding.FragmentLikeBinding
 import com.shwjdqls.test.databinding.FragmentSendBinding
 
 class SendFragment : Fragment() {
@@ -54,7 +51,7 @@ class SendFragment : Fragment() {
         }
 
         binding.imageViewDelete.setOnClickListener {
-            adapter.setDeleteMode()
+            adapter.setDeleteModeOrDelete()
         }
     }
 }

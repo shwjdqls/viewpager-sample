@@ -1,6 +1,8 @@
 package com.shwjdqls.test
 
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
@@ -11,6 +13,8 @@ import com.shwjdqls.test.databinding.ItemPersonBinding
 class PersonAdapter : RecyclerView.Adapter<PersonAdapter.PersonViewHolder>() {
     private val items = arrayListOf<Person>()
     private val totalItems = arrayListOf<Person>()
+    private val selectedItems = arrayListOf<View>()
+    private val selectedIndexList = arrayListOf<Int>()
     private var isShrunk = true
     private var isDeleteMode = false
 
@@ -49,8 +53,17 @@ class PersonAdapter : RecyclerView.Adapter<PersonAdapter.PersonViewHolder>() {
         }
     }
 
-    fun setDeleteMode() {
-        isDeleteMode = true
+    fun setDeleteModeOrDelete() {
+        if (!isDeleteMode) {
+            isDeleteMode = true
+            notifyDataSetChanged()
+        } else {
+            selectedIndexList.forEach {
+                items.removeAt(it)
+            }
+            isDeleteMode = false
+            notifyDataSetChanged()
+        }
     }
 
     inner class PersonViewHolder(private val binding: ItemPersonBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -63,7 +76,16 @@ class PersonAdapter : RecyclerView.Adapter<PersonAdapter.PersonViewHolder>() {
                 }
                 if (isDeleteMode) {
                     itemView.setOnClickListener {
-                        it.findViewById<ImageView>(R.id.whole_view).setBackgroundColor(ContextCompat.getColor(it.context, R.color.design_default_color_error))
+                        val index = (it.parent as ViewGroup).indexOfChild(it)
+                        if (selectedItems.contains(it)) {
+                            it.findViewById<ImageView>(R.id.whole_view).setBackgroundColor(ContextCompat.getColor(it.context, android.R.color.transparent))
+                            selectedItems.remove(it)
+                            selectedIndexList.remove(index)
+                        } else {
+                            it.findViewById<ImageView>(R.id.whole_view).setBackgroundColor(ContextCompat.getColor(it.context, R.color.grey))
+                            selectedItems.add(it)
+                            selectedIndexList.add(index)
+                        }
                     }
                 }
             }
