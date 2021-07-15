@@ -37,7 +37,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView_first"
+                android:id="@+id/textView_title_first"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="내가 좋아요한 사람들"
@@ -62,16 +62,16 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView_first"
-                />
+                app:layout_constraintTop_toBottomOf="@id/textView_title_first" />
 
             <TextView
-                android:id="@+id/textview_first"
+                android:id="@+id/textview_list_first"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:text="목록 더 보기"
                 android:textColor="#c8c8c8"
+                android:background="@drawable/rect"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/recyclerview_first"
@@ -82,10 +82,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="100dp"
                 android:src="@drawable/icon_24_px_down"
-                app:layout_constraintStart_toStartOf="@id/textview_first"
-                app:layout_constraintEnd_toEndOf="@id/textview_first"
-                app:layout_constraintTop_toTopOf="@id/textview_first"
-                app:layout_constraintBottom_toBottomOf="@id/textview_first"
+                app:layout_constraintStart_toStartOf="@id/textview_list_first"
+                app:layout_constraintEnd_toEndOf="@id/textview_list_first"
+                app:layout_constraintTop_toTopOf="@id/textview_list_first"
+                app:layout_constraintBottom_toBottomOf="@id/textview_list_first"
                 tools:ignore="ContentDescription" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
