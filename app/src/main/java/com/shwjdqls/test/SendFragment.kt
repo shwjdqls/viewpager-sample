@@ -1,9 +1,11 @@
 package com.shwjdqls.test
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.shwjdqls.test.databinding.FragmentSendBinding
@@ -21,7 +23,6 @@ class SendFragment : Fragment() {
         Person(R.drawable.people_3,"Kacof"),
         Person(R.drawable.people_4,"Rachel"),
         Person(R.drawable.people_5,"Soonka"),
-
     )
 
     private val people2 = arrayListOf(
@@ -59,15 +60,15 @@ class SendFragment : Fragment() {
         adapter2.setItems(people2)
         adapter3.setItems(people3)
 
-        if (adapter1.itemCount < 6) {
+        if (adapter1.getTotalItemCount() <= 6) {
             binding.textviewList1.visibility = View.GONE
             binding.imageView1.visibility = View.GONE
         }
-        if (adapter2.itemCount < 6) {
+        if (adapter2.getTotalItemCount() <= 6) {
             binding.textviewList2.visibility = View.GONE
             binding.imageView2.visibility = View.GONE
         }
-        if (adapter3.itemCount < 6) {
+        if (adapter3.getTotalItemCount() <= 6) {
             binding.textviewList3.visibility = View.GONE
             binding.imageView3.visibility = View.GONE
         }
@@ -107,25 +108,40 @@ class SendFragment : Fragment() {
 
         binding.imageViewDelete1.setOnClickListener {
             adapter1.setDeleteModeOrDelete()
-            if (adapter1.itemCount < 6) {
+            if (adapter1.getTotalItemCount() <= 6) {
                 binding.textviewList1.visibility = View.GONE
                 binding.imageView1.visibility = View.GONE
+            }
+            if (adapter1.getIsDeleteMode()) {
+                (it as ImageView).setColorFilter(Color.BLUE)
+            } else {
+                (it as ImageView).setColorFilter(Color.GRAY)
             }
         }
 
         binding.imageViewDelete2.setOnClickListener {
             adapter2.setDeleteModeOrDelete()
-            if (adapter2.itemCount < 6) {
+            if (adapter2.getTotalItemCount() <= 6) {
                 binding.textviewList2.visibility = View.GONE
                 binding.imageView2.visibility = View.GONE
+            }
+            if (adapter2.getIsDeleteMode()) {
+                (it as ImageView).setColorFilter(Color.BLUE)
+            } else {
+                (it as ImageView).setColorFilter(Color.GRAY)
             }
         }
 
         binding.imageViewDelete3.setOnClickListener {
             adapter3.setDeleteModeOrDelete()
-            if (adapter3.itemCount < 6) {
+            if (adapter3.getTotalItemCount() <= 6) {
                 binding.textviewList3.visibility = View.GONE
                 binding.imageView3.visibility = View.GONE
+            }
+            if (adapter3.getIsDeleteMode()) {
+                (it as ImageView).setColorFilter(Color.BLUE)
+            } else {
+                (it as ImageView).setColorFilter(Color.GRAY)
             }
         }
     }

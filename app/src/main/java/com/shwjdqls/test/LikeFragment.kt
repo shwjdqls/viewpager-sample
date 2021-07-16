@@ -38,6 +38,5 @@ class LikeFragment : Fragment() {
                 else -> "좋아요"
             }
         }.attach()
-
     }
 }

@@ -27,6 +27,10 @@ class PersonAdapter : RecyclerView.Adapter<PersonAdapter.PersonViewHolder>() {
         holder.bind(items[position])
     }
 
+    fun getTotalItemCount() = totalItems.size
+
+    fun getIsDeleteMode() = isDeleteMode
+
     fun setItems(items: List<Person>) {
         totalItems.addAll(items)
         var showedItems = items
@@ -38,18 +42,25 @@ class PersonAdapter : RecyclerView.Adapter<PersonAdapter.PersonViewHolder>() {
     }
 
     fun resize(): Boolean {
-        return if (isShrunk) {
+        if (isShrunk) {
             items.clear()
             items.addAll(totalItems)
             notifyDataSetChanged()
             isShrunk = false
-            false
+            return false
         } else {
             items.clear()
-            items.addAll(totalItems.subList(0, 6))
-            notifyDataSetChanged()
-            isShrunk = true
-            true
+            return if (totalItems.size > 6) {
+                items.addAll(totalItems.subList(0, 6))
+                notifyDataSetChanged()
+                isShrunk = true
+                true
+            } else {
+                items.addAll(totalItems)
+                notifyDataSetChanged()
+                isShrunk = false
+                false
+            }
         }
     }
 
@@ -65,6 +76,8 @@ class PersonAdapter : RecyclerView.Adapter<PersonAdapter.PersonViewHolder>() {
                 items.removeAt(selectedIndexList[i])
                 totalItems.removeAt(selectedIndexList[i])
             }
+            resize()
+            selectedIndexList.clear()
             isDeleteMode = false
             notifyDataSetChanged()
         }
